@@ -1,0 +1,52 @@
+<div class="list-container">
+  <h2>Patient List</h2>
+<div *ngIf="loading">Loading patients...</div>
+<div *ngIf="error" style="color:red">{{ error }}</div>
+
+<div *ngIf="!loading && patients.length === 0">No patients found.</div>
+
+<table mat-table [dataSource]="patients" class="mat-elevation-z8" *ngIf="patients.length">
+
+  <!-- ID Column -->
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef> ID </th>
+    <td mat-cell *matCellDef="let patient"> {{patient.id}} </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef> Name </th>
+    <td mat-cell *matCellDef="let patient"> {{patient.name}} </td>
+  </ng-container>
+
+  <!-- NIC Column -->
+  <ng-container matColumnDef="nic">
+    <th mat-header-cell *matHeaderCellDef> NIC </th>
+    <td mat-cell *matCellDef="let patient"> {{patient.nic}} </td>
+  </ng-container>
+
+  <!-- Date of Birth Column -->
+  <ng-container matColumnDef="dateOfBirth">
+    <th mat-header-cell *matHeaderCellDef> DOB </th>
+    <td mat-cell *matCellDef="let patient"> {{patient.dateOfBirth}} </td>
+  </ng-container>
+
+  <!-- Gender Column -->
+  <ng-container matColumnDef="gender">
+    <th mat-header-cell *matHeaderCellDef> Gender </th>
+    <td mat-cell *matCellDef="let patient"> {{patient.gender}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef> Actions </th>
+    <td mat-cell *matCellDef="let patient">
+      <button mat-button class="btn-view" (click)="getPatientById(patient.id)">View</button>
+      <button mat-button class="btn-delete" (click)="deletePatient(patient.id)">Delete</button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+</div>
+

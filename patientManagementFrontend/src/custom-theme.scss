@@ -1,0 +1,14 @@
+// ✅ This must be FIRST
+@use '@angular/material' as mat;
+
+// Optional theme setup (edit as needed)
+@include mat.core();
+
+$my-theme: mat.define-light-theme((
+  color: (
+    primary: mat.define-palette(mat.$indigo-palette),
+    accent: mat.define-palette(mat.$pink-palette),
+  )
+));
+
+@include mat.all-component-themes($my-theme);

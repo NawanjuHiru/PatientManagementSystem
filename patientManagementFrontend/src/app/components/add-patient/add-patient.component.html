@@ -1,0 +1,28 @@
+<div class="form-container">
+  <h2>Add Patient</h2>
+  <form [formGroup]="patientForm" (ngSubmit)="onSubmit()">
+
+    <label for="name">Patient Name:</label>
+    <input type="text" id="name" formControlName="name" required />
+    <br /><br />
+
+    <label for="nic">NIC:</label>
+    <input type="text" id="nic" formControlName="nic" required />
+    <br /><br />
+
+    <label for="dateOfBirth">Date of Birth:</label>
+    <input type="date" id="dateOfBirth" formControlName="dateOfBirth" required />
+    <br /><br />
+
+    <label for="gender">Gender:</label>
+    <select id="gender" formControlName="gender" required>
+      <option value="">-- Select Gender --</option>
+      <option value="Male">Male</option>
+      <option value="Female">Female</option>
+      <option value="Other">Other</option>
+    </select>
+    <br /><br />
+
+    <button type="submit" [disabled]="patientForm.invalid">Add Patient</button>
+  </form>
+</div>
