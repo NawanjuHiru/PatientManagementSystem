@@ -4,14 +4,25 @@
 
     <label for="name">Patient Name:</label>
     <input type="text" id="name" formControlName="name" required />
+    <div *ngIf="patientForm.get('name')?.invalid && (patientForm.get('name')?.touched || patientForm.get('name')?.dirty)" style="color:red;">
+      <small *ngIf="patientForm.get('name')?.errors?.['required']">Name is required.</small>
+      <small *ngIf="patientForm.get('name')?.errors?.['minlength']">Name must be at least 3 characters.</small>
+    </div>
     <br /><br />
 
     <label for="nic">NIC:</label>
     <input type="text" id="nic" formControlName="nic" required />
+    <div *ngIf="patientForm.get('nic')?.invalid && (patientForm.get('nic')?.touched || patientForm.get('nic')?.dirty)" style="color:red;">
+      <small *ngIf="patientForm.get('nic')?.errors?.['required']">NIC is required.</small>
+      <small *ngIf="patientForm.get('nic')?.errors?.['pattern']">NIC must be 9 to 12 digits.</small>
+    </div>
     <br /><br />
 
     <label for="dateOfBirth">Date of Birth:</label>
     <input type="date" id="dateOfBirth" formControlName="dateOfBirth" required />
+    <div *ngIf="patientForm.get('dateOfBirth')?.invalid && (patientForm.get('dateOfBirth')?.touched || patientForm.get('dateOfBirth')?.dirty)" style="color:red;">
+      <small>Date of Birth is required.</small>
+    </div>
     <br /><br />
 
     <label for="gender">Gender:</label>
@@ -21,6 +32,9 @@
       <option value="Female">Female</option>
       <option value="Other">Other</option>
     </select>
+    <div *ngIf="patientForm.get('gender')?.invalid && (patientForm.get('gender')?.touched || patientForm.get('gender')?.dirty)" style="color:red;">
+      <small>Gender is required.</small>
+    </div>
     <br /><br />
 
     <button type="submit" [disabled]="patientForm.invalid">Add Patient</button>
