@@ -13,7 +13,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
     MatTableModule
   ],
   templateUrl: './patient-list.component.html',
-  styleUrls: ['./patient-list.component.css'] // you can create a blank .scss file to fix the warning
+  styleUrls: ['./patient-list.component.css'] 
 })
 export class PatientListComponent implements OnInit {
   patients: Patient[] = [];
@@ -66,7 +66,7 @@ export class PatientListComponent implements OnInit {
   this.patientService.deletePatient(id).subscribe({
     next: () => {
       this.snackBar.open('Patient deleted successfully!', 'Close', { duration: 3000 });
-      this.loadPatients();  // Refresh list if you have a load method
+      this.loadPatients();  
     },
     error: () => {
       this.snackBar.open('Failed to delete patient.', 'Close', { duration: 3000 });
